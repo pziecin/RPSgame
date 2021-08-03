@@ -1,10 +1,10 @@
 import './App.css';
+import MainView from './component/MainView';
 
 function App() {
   return (
     <div className="App">
-      <h1>Rock Paper Scisors Game</h1>
-      
+      <MainView/>
     </div>
   );
 }
