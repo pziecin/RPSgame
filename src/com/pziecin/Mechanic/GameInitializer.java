@@ -3,6 +3,7 @@ package com.pziecin.Mechanic;
 import com.pziecin.Events.Player;
 import com.pziecin.GUI.Menu;
 import com.pziecin.GUI.Mode;
+import com.pziecin.Service.Server;
 
 import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.awt.event.KeyEvent;
@@ -26,14 +27,21 @@ public class GameInitializer implements Runnable {
 
     @Override
     public void run() {
-        Mode mode = menu.gameMode();
-        players.addAll(menu.getPlayers(mode));
-        while (active) {
-            State state = new State();
-            state.setStates(menu.takeMoves(players));
-            menu.showResults(Predictor.solveStatesFor2Players(state));
-            active = menu.continueGame();
+        try {
+            Server server = new Server(8001);
+            server.start();
+        }catch (Exception e){
+            System.out.println(e);
         }
-        menu.close();
+//
+//        Mode mode = menu.gameMode();
+//        players.addAll(menu.getPlayers(mode));
+//        while (active) {
+//            State state = new State();
+//            state.setStates(menu.takeMoves(players));
+//            menu.showResults(Predictor.solveStatesFor2Players(state));
+//            active = menu.continueGame();
+//        }
+//        menu.close();
     }
 }
