@@ -44,13 +44,11 @@ public class Server {
             exchange.getResponseHeaders().add("Access-Control-Max-Age", "86400");
 
             if(exchange.getRequestMethod().equals("POST")) {
-                System.out.println("dziala");
                 InputStreamReader isr =  new InputStreamReader(exchange.getRequestBody(),"utf-8");
                 BufferedReader br = new BufferedReader(isr);
                 String value = br.readLine();
                 String result;
                 HashMap<String, String> parsedResponse = parseResponse(value);
-                System.out.println(parsedResponse);
                 if(parsedResponse.get("mode").equals(Mode.PVP.name())){
                     if(parsedResponse.get("p1") == null || parsedResponse.get("p1") == null){
                         exchange.sendResponseHeaders(400, 0);
@@ -61,14 +59,11 @@ public class Server {
                     exchange.getResponseBody().write(result.getBytes(StandardCharsets.UTF_8));
                     exchange.getResponseBody().close();
                 }else if(parsedResponse.get("mode").equals(Mode.PVE.name())){
-                    System.out.println("elo");
                     if(parsedResponse.get("p1") == null){
-                        System.out.println("elo");
                         exchange.sendResponseHeaders(400, 0);
                         exchange.getResponseBody().write("Ups".getBytes(StandardCharsets.UTF_8));
                     }
                     result = service.solveState(createListNames(parsedResponse.get("p1Name"), "BOT"), createListEventsWithBot(parsedResponse.get("p1")));
-                    System.out.println(result);
                     exchange.sendResponseHeaders(200, 0);
                     exchange.getResponseBody().write(result.getBytes(StandardCharsets.UTF_8));
                     exchange.getResponseBody().close();
@@ -80,7 +75,6 @@ public class Server {
         });
         server.createContext("/solve", exchange -> {
             if(exchange.getRequestMethod().equals("GET")) {
-                System.out.println(exchange.getRequestMethod());
                 exchange.sendResponseHeaders(200, 0);
             }
         });
@@ -113,7 +107,6 @@ public class Server {
     private List<String> createListEventsWithBot(String p1){
         List<String> events = new ArrayList<>();
         events.add(p1);
-        System.out.println(getComputerMove().getType().toString());
         events.add(getComputerMove().getType().toString());
         return events;
     }
