@@ -21,7 +21,7 @@ const Server = ({mode, p1,p2,p1Name,p2Name}) => {
 
         return (
             <div>
-              {value}
+              <h2 style={{color:"#ffffff"}}>{value}</h2>
             </div>
         )
 }

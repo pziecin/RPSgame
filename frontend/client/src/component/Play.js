@@ -45,22 +45,30 @@ const Play = ({mode, p1Name, p2Name}) => {
         }
     }
 
+    
+    const restart = () => {
+        setP1('')
+        setP2('')
+    }
+
     return (
         <div>
-            <h2>{p1Name}</h2>
+            <h2 style={{color:"#ffffff"}}>{p1Name}</h2>
             <Button id="1" onClick={onClick} text="ROCK" />
             <Button id="2" onClick={onClick} text="PAPER" />
             <Button id="3" onClick={onClick} text="SCISORS"/>
             {mode==="PVP" && 
             <div>
-                <h2>{p2Name}</h2>
+                <h2 style={{color:"#ffffff"}}>{p2Name}</h2>
                 <Button id="4" onClick={onClick2} text="ROCK" />
                 <Button id="5" onClick={onClick2} text="PAPER" />
                 <Button id="6" onClick={onClick2} text="SCISORS"/>
             </div>}
-            {/* <div>{p1} : {p2} </div> */}
             {(mode==="PVP" && p1 !== ''  && p2 !== ''  ) && <Server mode='PVP' p1={p1} p2={p2} p1Name={p1Name} p2Name={p2Name} /> }
             {(mode==="PVE" && p1 !== '') && <Server mode='PVE' p1={p1} p2="BOT" p1Name={p1Name} p2Name="BOT" />}
+            {((mode==="PVP" && p1 !== ''  && p2 !== ''  ) || (mode==="PVE" && p1 !== '')) && <button className ="button" onClick={restart}> Restart </button>}
+
+
         </div>
     )
 }
