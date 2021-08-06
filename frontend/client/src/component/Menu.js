@@ -20,8 +20,8 @@ const Menu = ({setTextMode, setP1Name, setP2Name}) => {
 
     return (
         <div>
-            <Button text="PVP" onClick={onClick}></Button>
-            <Button text="PVE" onClick={onClick2}></Button>
+            <Button source="../multi.png" text="PVP" onClick={onClick}></Button>
+            <Button source="../bot.png"text="PVE" onClick={onClick2}></Button>
             {text==="PVP" && <TextInput setP1Name={setP1Name} setP2Name={setP2Name} multi />}
             {text==="PVE" && <TextInput setP1Name={setP1Name} setP2Name={setP2Name} />}
         </div>

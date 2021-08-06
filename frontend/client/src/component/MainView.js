@@ -24,6 +24,7 @@ const MainView = () => {
             </Route>
             </Switch>
             </BrowserRouter>
+            <a target="_blank" href="https://icons8.com/icon/44378/hand-rock"><h6 style={{color:"#ffffff"}}>Hand Rock</h6></a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         </div>
     )
 }
