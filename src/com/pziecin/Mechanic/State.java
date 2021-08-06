@@ -22,4 +22,5 @@ public class State {
     public void setStates(HashMap<Player, Event> states) {
         this.states = states;
     }
+
 }

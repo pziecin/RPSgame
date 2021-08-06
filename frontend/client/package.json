@@ -24,6 +24,12 @@
       "react-app/jest"
     ]
   },
+  "proxy": {
+    "/predict":  {
+        "target": "http://localhost:8001",
+        "secure": false
+    }
+},
   "browserslist": {
     "production": [
       ">0.2%",

@@ -3,10 +3,7 @@ package com.pziecin.GUI;
 import com.pziecin.Events.Event;
 import com.pziecin.Events.Player;
 import com.pziecin.Events.Type;
-import com.pziecin.Mechanic.State;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.*;
 
 public class Menu{

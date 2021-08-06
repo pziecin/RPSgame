@@ -1,32 +1,30 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useEffect} from 'react'
 
-export class Server extends Component {
-    constructor() {
-        super()
+const Server = ({mode, p1,p2,p1Name,p2Name}) => {
+
+  const [value, setValue] = useState('')
+
+  useEffect(()=>{
+    getData()
+}, [])
+
+  const getData = () => {
+        let data = 'p2Name:'+p2Name+',p1:'+p1+',p1Name:'+p1Name+',p2:'+p2
+
+        fetch(window.origin + "/predict", {method: 'POST', headers: {
+          'Content-Type': 'application/json'
+        },
+        body: data
+      }).then(response => response.text()).then(text => setValue(text))
+      .catch(err => console.log(err));
       }
 
-    componentWillMount() {
-        this.getData()
-      }
-
-    getData() {
-        var xhr = new XMLHttpRequest()
-        xhr.addEventListener('load', () => {
-          console.log(xhr.responseText)
-        })
-
-        xhr.open('GET', 'http://localhost:8001/predict')
-        xhr.send()
-      }
-
-    render() {
         return (
             <div>
-
+              {value}
             </div>
         )
-    }
 }
 
 export default Server
+

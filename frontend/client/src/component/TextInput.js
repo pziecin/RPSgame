@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const TextInput = ({multi}) => {
+const TextInput = ({setP1Name, setP2Name, multi}) => {
 
     const submitForm = () => {
         console.log(this.state.p2)

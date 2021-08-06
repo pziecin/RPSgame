@@ -20,7 +20,7 @@ public class Predictor {
         Event eventPlayer1 = p1.getValue();
         String player1Name = p1.getKey().getName();
         Event eventPlayer2 = p2.getValue();
-        Player player2Name = p2.getKey();
+        String player2Name = p2.getKey().getName();
 
         if(eventPlayer1.getType() == eventPlayer2.getType()){
             return "Draw";
