@@ -28,7 +28,7 @@ public class GameInitializer implements Runnable {
     @Override
     public void run() {
         try {
-            Server server = new Server(8001);
+            Server server = new Server(8000);
             server.start();
         }catch (Exception e){
             System.out.println(e);

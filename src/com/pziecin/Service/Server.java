@@ -30,7 +30,7 @@ public class Server {
     Random random;
 
     public Server (int port) throws IOException {
-        this.server = HttpServer.create(new InetSocketAddress("localhost", port), 0);
+        this.server = HttpServer.create(new InetSocketAddress("0.0.0.0", port), 0);
         this.service = new Service();
         this.random = new Random();
     }
@@ -49,14 +49,17 @@ public class Server {
                 String value = br.readLine();
                 String result;
                 HashMap<String, String> parsedResponse = parseResponse(value);
+                System.out.println("DZIALA");
                 if(parsedResponse.get("mode").equals(Mode.PVP.name())){
                     if(parsedResponse.get("p1") == null || parsedResponse.get("p1") == null){
                         exchange.sendResponseHeaders(400, 0);
                         exchange.getResponseBody().write("Ups".getBytes(StandardCharsets.UTF_8));
                     }
+                    System.out.println("DZIALA 2");
                     result = service.solveState(createListNames(parsedResponse.get("p1Name"), parsedResponse.get("p2Name")), createListEvents(parsedResponse.get("p1"), parsedResponse.get("p2")));
                     exchange.sendResponseHeaders(200, 0);
                     exchange.getResponseBody().write(result.getBytes(StandardCharsets.UTF_8));
+                    System.out.println("DZIALA3");
                     exchange.getResponseBody().close();
                 }else if(parsedResponse.get("mode").equals(Mode.PVE.name())){
                     if(parsedResponse.get("p1") == null){

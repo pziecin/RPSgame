@@ -1,0 +1,15 @@
+version: "3"
+services: 
+    client:
+        container_name: client
+        build: ./frontend/client
+        ports:
+            - "3000:3000"
+        depends_on: 
+            - api
+    api:
+        container_name: api
+        build: .
+        ports:
+            - "8000:8000"
+        
