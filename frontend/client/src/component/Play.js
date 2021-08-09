@@ -23,6 +23,7 @@ const Play = ({mode, p1Name, p2Name}) => {
                 setP2("SCISORS")
                 break;
             default:
+                console.log("DEF")
                 setP2("ROCK")
                 break;
         }
@@ -32,12 +33,15 @@ const Play = ({mode, p1Name, p2Name}) => {
         switch (e.target.id) {
             case "1":
                 setP1("ROCK")
+                console.log(1)
                 break;
             case "2":
                 setP1("PAPER")
+                console.log(2)
                 break;
             case "3":
                 setP1("SCISORS")
+                console.log(3)
                 break;
             default:
                 setP1("ROCK")
