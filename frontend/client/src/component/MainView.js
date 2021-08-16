@@ -12,7 +12,7 @@ const MainView = () => {
 
     return (
         <div>
-            <h1 style={{color:"#ffffff"}}>NOKIA</h1><h1 style={{color:"#ffffff"}}>Rock paper scissors</h1>
+            <h1 style={{color:"#ffffff"}}>Rock paper scissors</h1>
             <BrowserRouter>
             <Switch>
             <Route exact path="/">
