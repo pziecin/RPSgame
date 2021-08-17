@@ -9,7 +9,7 @@ services:
             - api
     api:
         container_name: api
-        build: ..
+        build: ../server/
         ports:
             - "8000:8000"
         
